@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ゆずシティ ディーラー カタログ</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #111118;
+    --card: #16161f;
+    --card2: #1e1e2a;
+    --accent: #f0c040;
+    --accent2: #ff6b35;
+    --text: #e8e8f0;
+    --muted: #7a7a99;
+    --border: #2a2a3a;
+    --super: #ff4466;
+    --sport: #4488ff;
+    --muscle: #ff8800;
+    --motorcycle: #aa44ff;
+    --suv: #22cc88;
+    --sedan: #44ccdd;
+    --compact: #ffcc22;
+    --offroad: #88cc44;
+    --classic: #cc8844;
+    --sportclassic: #dd9933;
+    --coupe: #5599ff;
+    --van: #888888;
+    --police: #3366ff;
+    --air: #00ccff;
+    --boat: #0088cc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f0f1a 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 40px rgba(240,192,64,0.15);
+  }
+  .header-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    color: var(--accent);
+    letter-spacing: 4px;
+    text-shadow: 0 0 30px rgba(240,192,64,0.5);
+  }
+  .logo-sub {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .header-stats {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .stat-badge {
+    text-align: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+  }
+  .stat-num {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* SEARCH & FILTER */
+  .controls {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 24px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .search-box {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px 10px 40px;
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-box input:focus { border-color: var(--accent); }
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 1rem;
+  }
+  .sort-select {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    cursor: pointer;
+  }
+  .count-display {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-left: auto;
+  }
+  .count-display span { color: var(--accent); font-weight: 700; }
+
+  /* SHOP TABS */
+  .shop-tabs {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 32px 24px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .shop-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: var(--card);
+    color: var(--muted);
+  }
+  .shop-tab:hover { border-color: var(--border); color: var(--text); }
+  .shop-tab.active { border-color: var(--accent); color: var(--accent); background: rgba(240,192,64,0.08); }
+  .shop-tab .tab-icon { font-size: 1.1rem; }
+  .shop-tab .tab-count {
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 0.7rem;
+  }
+  .shop-tab.active .tab-count { background: rgba(240,192,64,0.2); }
+
+  /* CATEGORY FILTER PILLS */
+  .cat-filters {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 32px 24px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .cat-pill {
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .cat-pill.active, .cat-pill:hover {
+    opacity: 1 !important;
+    filter: brightness(1.2);
+  }
+  .cat-pill { opacity: 0.6; }
+
+  /* GRID */
+  .catalog-grid {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 32px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  /* CARD */
+  .vehicle-card {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    cursor: pointer;
+    position: relative;
+  }
+  .vehicle-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    border-color: rgba(240,192,64,0.3);
+  }
+  .vehicle-card.out-of-stock {
+    opacity: 0.5;
+  }
+
+  .card-img-wrap {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%);
+    height: 160px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  .vehicle-card:hover .card-img-wrap img { transform: scale(1.05); }
+  .img-fallback {
+    font-size: 3.5rem;
+    opacity: 0.3;
+  }
+
+  .cat-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
+  .stock-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,50,50,0.85);
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .card-body {
+    padding: 14px 16px;
+  }
+  .card-model {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .cat-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .card-price {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* NO RESULTS */
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--muted);
+  }
+  .no-results .big-icon { font-size: 4rem; margin-bottom: 16px; }
+  .no-results p { font-size: 1rem; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* Section divider */
+  .section-divider {
+    max-width: 1600px;
+    margin: 0 auto 16px;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    color: var(--muted);
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-main">🍋 YUZU CITY DEALER</span>
+      <span class="logo-sub">Official Vehicle Catalog — All Shops</span>
+    </div>
+    <div class="header-stats">
+      <div class="stat-badge">
+        <span class="stat-num" id="total-count">0</span>
+        <span class="stat-label">総車両数</span>
+      </div>
+      <div class="stat-badge">
+        <span class="stat-num" id="in-stock-count">0</span>
+        <span class="stat-label">在庫あり</span>
+      </div>
+      <div class="stat-badge">
+        <span class="stat-num" id="shop-count">0</span>
+        <span class="stat-label">ショップ</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search" placeholder="車名で検索..." oninput="render()">
+  </div>
+  <select class="sort-select" id="sort" onchange="render()">
+    <option value="name">名前順</option>
+    <option value="price-asc">価格: 安い順</option>
+    <option value="price-desc">価格: 高い順</option>
+  </select>
+  <span class="count-display">表示中: <span id="display-count">0</span> 件</span>
+</div>
+
+<div class="shop-tabs" id="shop-tabs"></div>
+<div class="cat-filters" id="cat-filters"></div>
+<div class="catalog-grid" id="grid"></div>
+
+<script>
+const VEHICLES = [
+  {"id":1,"model":"adder","price":300000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":2,"model":"akuma","price":30000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":3,"model":"alpha","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":4,"model":"asbo","price":5000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":5,"model":"asea","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":6,"model":"asterope","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":7,"model":"bagger","price":10000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":8,"model":"baller","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":9,"model":"baller2","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":12,"model":"banshee","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":13,"model":"bati","price":30000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":14,"model":"bati2","price":30000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":15,"model":"bestiagts","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":16,"model":"bf400","price":25000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":17,"model":"bfinjection","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":18,"model":"bifta","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":19,"model":"bison","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":20,"model":"bjxl","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":21,"model":"blade","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":22,"model":"blazer","price":15000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":23,"model":"blazer4","price":15000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":24,"model":"blista","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":26,"model":"bobcatxl","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":27,"model":"bodhi2","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":28,"model":"brawler","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":29,"model":"brioso","price":25000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":30,"model":"brioso2","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":31,"model":"buccaneer","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":32,"model":"buccaneer2","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":33,"model":"buffalo","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":34,"model":"buffalo2","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":35,"model":"bullet","price":350000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":36,"model":"burrito","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":37,"model":"camper","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":38,"model":"carbonrs","price":29000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":39,"model":"casco","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":40,"model":"cavalcade2","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":41,"model":"cheburek","price":40000000,"category":"classic","stock":1000,"dealer":"main","type":"car"},
+  {"id":42,"model":"cheetah","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":43,"model":"chimera","price":12500000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":44,"model":"chino","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":45,"model":"chino2","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":46,"model":"cliffhanger","price":16500000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":47,"model":"club","price":25000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":48,"model":"cog55","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":49,"model":"cogcabrio","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":50,"model":"cognoscenti","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":51,"model":"comet2","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":52,"model":"comet5","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":53,"model":"comet6","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":54,"model":"contender","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":55,"model":"coquette","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":56,"model":"coquette2","price":165000,"category":"sportclassic","stock":0,"dealer":"main","type":"car"},
+  {"id":57,"model":"coquette3","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":59,"model":"cyclone","price":500000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":60,"model":"cypher","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":61,"model":"daemon","price":19000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":62,"model":"daemon2","price":19000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":63,"model":"defiler","price":27000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":64,"model":"deviant","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":65,"model":"dilettante","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":70,"model":"dloader","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":71,"model":"dominator","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":72,"model":"dominator2","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":73,"model":"dominator8","price":80000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":74,"model":"double","price":32000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":75,"model":"dubsta","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":76,"model":"dubsta2","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":77,"model":"dukes","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":78,"model":"dune","price":20000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":79,"model":"elegy2","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":80,"model":"ellie","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":81,"model":"emperor","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":82,"model":"emperor2","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":83,"model":"enduro","price":13500000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":84,"model":"entityxf","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":85,"model":"esskey","price":20000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":86,"model":"euros","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":87,"model":"everon","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":88,"model":"exemplar","price":35000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":89,"model":"faction","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":90,"model":"faction2","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":91,"model":"faction3","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":92,"model":"fagaloa","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":93,"model":"faggio","price":5500000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":94,"model":"faggio2","price":5000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":95,"model":"felon","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":96,"model":"felon2","price":30000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":97,"model":"feltzer2","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":98,"model":"feltzer3","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":100,"model":"flashgt","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":101,"model":"fmj","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":102,"model":"fq2","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":103,"model":"freecrawler","price":20000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":104,"model":"fugitive","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":105,"model":"furoregt","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":106,"model":"fusilade","price":40000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":107,"model":"futo","price":30000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":108,"model":"futo2","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":109,"model":"gargoyle","price":21000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":110,"model":"gauntlet","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":111,"model":"gb200","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":112,"model":"gburrito","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":113,"model":"gburrito2","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":114,"model":"glendale","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":115,"model":"glendale2","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":116,"model":"gp1","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":117,"model":"granger","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":118,"model":"gresley","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":119,"model":"growler","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":120,"model":"guardian","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":121,"model":"habanero","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":122,"model":"hakuchou","price":100000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":123,"model":"hermes","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":124,"model":"hexer","price":17000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":125,"model":"hotknife","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":126,"model":"hotring","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":127,"model":"huntley","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":128,"model":"hustler","price":80000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":129,"model":"infernus","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":130,"model":"ingot","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":131,"model":"innovation","price":18000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":132,"model":"intruder","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":133,"model":"issi2","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":134,"model":"issi3","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":135,"model":"italigtb","price":300000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":136,"model":"jackal","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":137,"model":"jester","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":138,"model":"jester2","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":139,"model":"jester4","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":141,"model":"journey","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":142,"model":"kalahari","price":10000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":143,"model":"khamelion","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":144,"model":"komoda","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":145,"model":"kuruma","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":146,"model":"landstalker","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":147,"model":"landstalker2","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":148,"model":"le7b","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":149,"model":"lynx","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":150,"model":"mamba","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":151,"model":"manana","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":152,"model":"manana2","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":154,"model":"manchez2","price":15000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":155,"model":"massacro","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":156,"model":"massacro2","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":157,"model":"mesa","price":20000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":158,"model":"mesa3","price":20000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":159,"model":"michelli","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":160,"model":"miniVAN","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":161,"model":"minivan2","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":162,"model":"monroe","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":163,"model":"moonbeam2","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":164,"model":"nemesis","price":27000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":165,"model":"nightblade","price":15000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":166,"model":"nightshade","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":167,"model":"ninef","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":168,"model":"ninef2","price":350000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":169,"model":"omnis","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":170,"model":"oracle","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":171,"model":"oracle2","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":172,"model":"osiris","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":173,"model":"panto","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":174,"model":"paradise","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":175,"model":"patriot","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":176,"model":"pcj","price":15000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":177,"model":"penetrator","price":300000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":178,"model":"penumbra","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":179,"model":"peyote3","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":180,"model":"pfister811","price":500000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":181,"model":"phoenix","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":182,"model":"picador","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":183,"model":"pigalle","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":184,"model":"prairie","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":185,"model":"premier","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":186,"model":"primo","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":187,"model":"primo2","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":188,"model":"radi","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":189,"model":"raiden","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":190,"model":"rancherxl","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":191,"model":"rapidgt","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":192,"model":"rapidgt2","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":193,"model":"rapidgt3","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":195,"model":"reaper","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":196,"model":"rebel2","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":197,"model":"regina","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":198,"model":"remus","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":199,"model":"retinue","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":200,"model":"retinue2","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":201,"model":"rhapsody","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":202,"model":"riata","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":203,"model":"rocoto","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":204,"model":"rt3000","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":205,"model":"ruffian","price":27500000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":207,"model":"rumpo","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":208,"model":"sabregt","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":209,"model":"sabregt2","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":210,"model":"sadler","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":211,"model":"sanchez","price":13000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":212,"model":"sanchez2","price":13000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":213,"model":"SANDKING","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":214,"model":"sandking2","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":215,"model":"sc1","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":216,"model":"schafter2","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":217,"model":"schafter3","price":40000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":218,"model":"schlagen","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":219,"model":"schwarzer","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":224,"model":"seminole","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":225,"model":"seminole2","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":226,"model":"sentinel","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":227,"model":"sentinel2","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":228,"model":"sentinel3","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":229,"model":"serrano","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":230,"model":"seven70","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":231,"model":"sheava","price":1000000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":232,"model":"shinobi","price":370000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":233,"model":"slamvan","price":40000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":236,"model":"speedo","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":237,"model":"stalion","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":238,"model":"stanier","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":239,"model":"stinger","price":40000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":240,"model":"stratum","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":241,"model":"streiter","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":242,"model":"sugoi","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":243,"model":"sultan","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":244,"model":"sultan3","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":245,"model":"sultanrs","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":246,"model":"SUPERD","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":247,"model":"surano","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":249,"model":"surfer","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":250,"model":"surfer2","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":251,"model":"surge","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":252,"model":"t20","price":500000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":253,"model":"tailgater2","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":255,"model":"tampa2","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":256,"model":"tempesta","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":257,"model":"thrust","price":23000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":258,"model":"tornado2","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":259,"model":"tornado5","price":45000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":262,"model":"toros","price":200000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":264,"model":"trophytruck","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":265,"model":"trophytruck2","price":80000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":266,"model":"tropos","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":267,"model":"tulip","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":268,"model":"turismor","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":269,"model":"tyrant","price":650000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":270,"model":"tyrus","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":271,"model":"vacca","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":272,"model":"vader","price":24000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":273,"model":"vectre","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":274,"model":"verlierer2","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":276,"model":"virgo","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":277,"model":"viseris","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":278,"model":"visione","price":370000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":279,"model":"voltic","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":280,"model":"voodoo","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":281,"model":"vstr","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":282,"model":"warrener","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":283,"model":"warrener2","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":284,"model":"WASHINGTON","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":285,"model":"weevil","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":286,"model":"windsor","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":287,"model":"windsor2","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":288,"model":"wolfsbane","price":12500000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":289,"model":"xa21","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":290,"model":"xls","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":291,"model":"yosemite","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":292,"model":"yosemite2","price":40000000,"category":"muscle","stock":0,"dealer":"main","type":"car"},
+  {"id":293,"model":"yosemite3","price":15000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":294,"model":"youga","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":295,"model":"youga2","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":296,"model":"youga3","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":297,"model":"youga4","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":298,"model":"z190","price":80000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":299,"model":"zentorno","price":1000000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":300,"model":"zion","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":301,"model":"zion2","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":302,"model":"zombiea","price":19000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":303,"model":"zr350","price":150000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":304,"model":"thrax","price":1300000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":305,"model":"tenf","price":150000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":306,"model":"tenf2","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":307,"model":"banshee2","price":500000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":308,"model":"jester3","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":310,"model":"nero","price":600000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":311,"model":"nero2","price":700000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":312,"model":"entity2","price":500000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":313,"model":"manchez","price":16000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":315,"model":"2vd_gstt203","price":1000000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":316,"model":"2vd_hr680","price":650000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":317,"model":"vd_pignus","price":650000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":318,"model":"2vd_shinobi","price":400000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":319,"model":"vd_pamira","price":500000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":320,"model":"vd_eparagon","price":300000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":321,"model":"2vd_neon","price":200000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":322,"model":"2vd_icoquette4","price":200000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":323,"model":"vd_vdominatorgtx","price":50000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":324,"model":"vd_schlagen","price":30000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":325,"model":"vd_dvigerozx","price":10000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":326,"model":"vd_ckamacho","price":30000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":327,"model":"2vd_hakuchou","price":100000000,"category":"police","stock":1000,"dealer":"police","type":"car"},
+  {"id":329,"model":"volatus","price":1000000000,"category":"air","stock":1000,"dealer":"herishop","type":"air"},
+  {"id":330,"model":"conada","price":850000000,"category":"air","stock":1000,"dealer":"herishop","type":"air"},
+  {"id":331,"model":"supervolito","price":600000000,"category":"air","stock":1000,"dealer":"herishop","type":"air"},
+  {"id":332,"model":"swift2","price":500000000,"category":"air","stock":1000,"dealer":"herishop","type":"air"},
+  {"id":333,"model":"frogger","price":450000000,"category":"air","stock":1000,"dealer":"herishop","type":"air"},
+  {"id":334,"model":"seasparrow","price":300000000,"category":"air","stock":1000,"dealer":"herishop","type":"air"},
+  {"id":335,"model":"seasparrow2","price":250000000,"category":"air","stock":1000,"dealer":"herishop","type":"air"},
+  {"id":336,"model":"havok","price":200000000,"category":"air","stock":1000,"dealer":"herishop","type":"air"},
+  {"id":337,"model":"avisa","price":1000000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":338,"model":"patrolboat","price":200000000,"category":"boat","stock":0,"dealer":"boatshop","type":"boat"},
+  {"id":339,"model":"tug","price":200000000,"category":"boat","stock":0,"dealer":"boatshop","type":"boat"},
+  {"id":340,"model":"toro","price":20000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":341,"model":"toro2","price":20000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":342,"model":"longfin","price":50000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":343,"model":"submersible2","price":200000000,"category":"boat","stock":0,"dealer":"boatshop","type":"boat"},
+  {"id":344,"model":"speeder","price":30000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":345,"model":"speeder2","price":30000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":346,"model":"tropic","price":30000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":347,"model":"tropic2","price":30000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":348,"model":"suntrap","price":20000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":349,"model":"submersible","price":200000000,"category":"boat","stock":0,"dealer":"boatshop","type":"boat"},
+  {"id":350,"model":"squalo","price":30000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":351,"model":"seashark","price":5000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":352,"model":"seashark3","price":5000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":353,"model":"marquis","price":10000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":354,"model":"jetmax","price":50000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":355,"model":"dinghy","price":50000000,"category":"boat","stock":1000,"dealer":"boatshop","type":"boat"},
+  {"id":356,"model":"dinghy2","price":200000000,"category":"boat","stock":0,"dealer":"boatshop","type":"boat"},
+  {"id":357,"model":"dinghy3","price":200000000,"category":"boat","stock":0,"dealer":"boatshop","type":"boat"},
+  {"id":358,"model":"dinghy4","price":200000000,"category":"boat","stock":0,"dealer":"boatshop","type":"boat"},
+  {"id":359,"model":"comet7","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":360,"model":"lampadati","price":35000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":361,"model":"deity","price":35000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":362,"model":"obey","price":30000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":363,"model":"rhinehart","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":365,"model":"impaler5","price":25000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":366,"model":"stafford","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":367,"model":"stretch","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":368,"model":"kanjo","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":369,"model":"issi7","price":100000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":370,"model":"blista2","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":371,"model":"blista3","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":372,"model":"brioso3","price":10000000,"category":"compact","stock":1000,"dealer":"main","type":"car"},
+  {"id":373,"model":"boor","price":20000000,"category":"offroad","stock":1000,"dealer":"main","type":"car"},
+  {"id":375,"model":"cinquemila","price":35000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":376,"model":"polbuz","price":300000000,"category":"police","stock":1000,"dealer":"police_air","type":"air"},
+  {"id":377,"model":"iwagen","price":30000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":378,"model":"astron","price":30000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":379,"model":"baller7","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":380,"model":"jubilee","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":381,"model":"eudora","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":382,"model":"asterope2","price":25000000,"category":"sedan","stock":1000,"dealer":"main","type":"car"},
+  {"id":383,"model":"cavalcade","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":384,"model":"novak","price":35000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":385,"model":"patriot2","price":30000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":386,"model":"rebla","price":30000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":388,"model":"baller8","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":389,"model":"cavalcade3","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":390,"model":"dorado","price":25000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":391,"model":"vivanite","price":30000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":392,"model":"castigator","price":30000000,"category":"suv","stock":1000,"dealer":"main","type":"car"},
+  {"id":393,"model":"f620","price":35000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":394,"model":"previon","price":35000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":395,"model":"kanjosj","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":396,"model":"postlude","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":398,"model":"tahoma","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":399,"model":"broadway","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":400,"model":"fr36","price":25000000,"category":"coupe","stock":1000,"dealer":"main","type":"car"},
+  {"id":401,"model":"clique","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":402,"model":"dominator3","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":403,"model":"dominator7","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":404,"model":"dominator9","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":405,"model":"gauntlet3","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":406,"model":"gauntlet4","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":407,"model":"gauntlet5","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":408,"model":"gauntlet2","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":409,"model":"impaler","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":410,"model":"impaler6","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":411,"model":"lurcher","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":412,"model":"ratloader","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":413,"model":"slamvan2","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":414,"model":"slamvan3","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":415,"model":"stalion2","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":416,"model":"vamos","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":417,"model":"vigero2","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":418,"model":"vigero3","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":419,"model":"vigero4","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":420,"model":"virgo2","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":421,"model":"virgo3","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":422,"model":"ruiner4","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":423,"model":"weevil2","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":424,"model":"buffalo5","price":150000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":425,"model":"tulip2","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":426,"model":"clique2","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":427,"model":"brigham","price":40000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":428,"model":"greenwood","price":80000000,"category":"muscle","stock":1000,"dealer":"main","type":"car"},
+  {"id":429,"model":"ardent","price":80000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":430,"model":"btype","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":431,"model":"btype2","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":432,"model":"btype3","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":433,"model":"dynasty","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":434,"model":"gt500","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":435,"model":"infernus2","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":436,"model":"nebula","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":437,"model":"driftnebula","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":438,"model":"peyote2","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":439,"model":"peyote","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":440,"model":"savestra","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":442,"model":"stingergt","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":443,"model":"stromberg","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":444,"model":"swinger","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":445,"model":"torero","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":446,"model":"tornado","price":40000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":447,"model":"turismo2","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":448,"model":"ztype","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":449,"model":"zion3","price":200000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":450,"model":"envisage","price":250000000,"category":"sportclassic","stock":1000,"dealer":"main","type":"car"},
+  {"id":451,"model":"avarus","price":18000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":452,"model":"diablous2","price":77000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":453,"model":"diablous","price":75000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":454,"model":"faggio3","price":5200000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":455,"model":"fcr","price":22000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":456,"model":"fcr2","price":23500000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":457,"model":"hakuchou2","price":320000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":458,"model":"lectro","price":25000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":459,"model":"manchez3","price":15500000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":460,"model":"sanctus","price":35000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":461,"model":"shotaro","price":350000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":462,"model":"sovereign","price":20000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":463,"model":"stryder","price":15000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":464,"model":"vindicator","price":80000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":465,"model":"vortex","price":90000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":466,"model":"zombieb","price":23000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":467,"model":"reever","price":95000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":468,"model":"powersurge","price":420000000,"category":"motorcycle","stock":1000,"dealer":"main","type":"car"},
+  {"id":469,"model":"rumpo3","price":25000000,"category":"van","stock":999,"dealer":"main","type":"car"},
+  {"id":470,"model":"burrito3","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":471,"model":"speedo4","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":472,"model":"moonbeam2","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":473,"model":"boxville","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":474,"model":"boxville2","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":475,"model":"boxville3","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":476,"model":"journey2","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":477,"model":"surfer3","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":478,"model":"speedo5","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":479,"model":"mule2","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":480,"model":"mule","price":20000000,"category":"van","stock":1000,"dealer":"main","type":"car"},
+  {"id":481,"model":"Paragon","price":220000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":482,"model":"comet3","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":483,"model":"r300","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":484,"model":"corsita","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":485,"model":"gauntlet6","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":486,"model":"nine4","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":487,"model":"schafter6","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":488,"model":"sm722","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":489,"model":"Issi8","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":490,"model":"driftfuto","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":491,"model":"elegy","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":492,"model":"specter","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":493,"model":"jugular","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":494,"model":"neon","price":180000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":495,"model":"panthere","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":496,"model":"paragon3","price":250000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":497,"model":"Pariah","price":240000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":498,"model":"sultan2","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":499,"model":"ruston","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":500,"model":"Everon2","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":501,"model":"comet4","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":502,"model":"drafter","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":503,"model":"revolter","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":504,"model":"Driftcypher","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":505,"model":"calico","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":506,"model":"Vorschlaghammer","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":507,"model":"imorgon","price":180000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":508,"model":"raptor","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":509,"model":"locust","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":510,"model":"coquette4","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":511,"model":"cheetah2","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":512,"model":"omnisegt","price":180000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":513,"model":"neo","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":514,"model":"carbonizzare","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":515,"model":"sentinel4","price":80000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":517,"model":"schafter5","price":150000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":518,"model":"coureur","price":200000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":519,"model":"schlagengt","price":230000000,"category":"sport","stock":1000,"dealer":"main","type":"car"},
+  {"id":520,"model":"torero2","price":900000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":521,"model":"s80","price":1000000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":522,"model":"LM87","price":600000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":523,"model":"krieger","price":800000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":524,"model":"italigtb2","price":320000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":525,"model":"italirsx","price":500000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":526,"model":"Italigto","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":527,"model":"stingertt","price":450000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":528,"model":"Ignus","price":1000000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":529,"model":"gstign2","price":2147483647,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":530,"model":"fmj2","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":531,"model":"entity3","price":600000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":532,"model":"emerus","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":533,"model":"tezeract","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":534,"model":"Virtue","price":900000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":535,"model":"turismo3","price":430000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":536,"model":"autarch","price":450000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":537,"model":"furia","price":1000000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":538,"model":"furiawb","price":2000000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":539,"model":"prototipo","price":700000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":540,"model":"taipan","price":450000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":541,"model":"tigon","price":350000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":542,"model":"vagner","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":543,"model":"zeno","price":400000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":544,"model":"gstzen1","price":2000000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":545,"model":"zorrusso","price":850000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":546,"model":"deveste","price":1000000000,"category":"super","stock":1000,"dealer":"main","type":"car"},
+  {"id":547,"model":"2vd_conada","price":800000000,"category":"police","stock":999,"dealer":"police_air","type":"air"},
+  {"id":548,"model":"2vd_supervolito","price":500000000,"category":"police","stock":999,"dealer":"police_air","type":"air"},
+];
+
+const SHOP_INFO = {
+  all:        { label: "すべて", icon: "🏪", color: "#f0c040" },
+  main:       { label: "メインディーラー", icon: "🚗", color: "#4488ff" },
+  police:     { label: "警察ディーラー", icon: "🚔", color: "#3366ff" },
+  herishop:   { label: "ヘリショップ", icon: "🚁", color: "#00ccff" },
+  boatshop:   { label: "ボートショップ", icon: "⛵", color: "#0088cc" },
+  police_air: { label: "警察航空隊", icon: "🚁", color: "#6644ff" },
+};
+
+const CAT_INFO = {
+  super:        { label: "スーパー",      color: "#ff4466", icon: "🏎" },
+  sport:        { label: "スポーツ",      color: "#4488ff", icon: "🚗" },
+  muscle:       { label: "マッスル",      color: "#ff8800", icon: "💪" },
+  sportclassic: { label: "クラシックスポーツ", color: "#dd9933", icon: "🏆" },
+  motorcycle:   { label: "バイク",         color: "#aa44ff", icon: "🏍" },
+  suv:          { label: "SUV",            color: "#22cc88", icon: "🚙" },
+  sedan:        { label: "セダン",         color: "#44ccdd", icon: "🚕" },
+  compact:      { label: "コンパクト",     color: "#ffcc22", icon: "🚘" },
+  coupe:        { label: "クーペ",         color: "#5599ff", icon: "🚗" },
+  offroad:      { label: "オフロード",     color: "#88cc44", icon: "🛻" },
+  van:          { label: "バン",           color: "#888888", icon: "🚐" },
+  classic:      { label: "クラシック",     color: "#cc8844", icon: "🚗" },
+  police:       { label: "警察",           color: "#3366ff", icon: "🚔" },
+  air:          { label: "航空機",         color: "#00ccff", icon: "🚁" },
+  boat:         { label: "ボート",         color: "#0088cc", icon: "⛵" },
+};
+
+const IMG_BASE = "https://www.gta5-mods.com/assets/images/vehicles/";
+
+function getCatStyle(cat) {
+  const c = CAT_INFO[cat] || { color: "#888", icon: "🚗" };
+  return c;
+}
+
+function formatPrice(p) {
+  if (p >= 100000000) return `¥${(p/100000000).toFixed(1)}億`;
+  if (p >= 10000) return `¥${(p/10000).toFixed(0)}万`;
+  return `¥${p.toLocaleString()}`;
+}
+
+function getVehicleImg(model) {
+  const m = model.toLowerCase().trim();
+  return `https://cdn.sanity.io/images/jv3jfvkp/production/vehicles/${m}.jpg`;
+}
+
+function getCategoryEmoji(cat) {
+  return (CAT_INFO[cat] || { icon: "🚗" }).icon;
+}
+
+let currentShop = "all";
+let currentCat = "all";
+
+function getShops() {
+  const shops = new Set(VEHICLES.map(v => v.dealer));
+  return ["all", ...Array.from(shops)];
+}
+
+function getCats(dealer) {
+  const filtered = dealer === "all" ? VEHICLES : VEHICLES.filter(v => v.dealer === dealer);
+  return ["all", ...Array.from(new Set(filtered.map(v => v.category))).sort()];
+}
+
+function buildShopTabs() {
+  const el = document.getElementById("shop-tabs");
+  const shops = getShops();
+  el.innerHTML = shops.map(s => {
+    const info = SHOP_INFO[s] || { label: s, icon: "🏪", color: "#888" };
+    const count = s === "all" ? VEHICLES.filter(v => v.stock > 0).length : VEHICLES.filter(v => v.dealer === s && v.stock > 0).length;
+    return `<div class="shop-tab${s === currentShop ? " active" : ""}" onclick="selectShop('${s}')" style="${s === currentShop ? `border-color:${info.color};color:${info.color};background:${info.color}18` : ""}">
+      <span class="tab-icon">${info.icon}</span>
+      ${info.label}
+      <span class="tab-count">${count}</span>
+    </div>`;
+  }).join("");
+}
+
+function buildCatFilters() {
+  const el = document.getElementById("cat-filters");
+  const cats = getCats(currentShop);
+  el.innerHTML = cats.map(c => {
+    const info = CAT_INFO[c] || { label: c, color: "#888", icon: "🚗" };
+    const label = c === "all" ? "すべて" : info.label;
+    const color = c === "all" ? "#f0c040" : info.color;
+    return `<div class="cat-pill${c === currentCat ? " active" : ""}" 
+      style="background:${color}22;color:${color};border-color:${color}55"
+      onclick="selectCat('${c}')">${c === "all" ? "🏪 すべて" : `${info.icon} ${label}`}</div>`;
+  }).join("");
+}
+
+function selectShop(shop) {
+  currentShop = shop;
+  currentCat = "all";
+  buildShopTabs();
+  buildCatFilters();
+  render();
+}
+
+function selectCat(cat) {
+  currentCat = cat;
+  buildCatFilters();
+  render();
+}
+
+function render() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const sort = document.getElementById("sort").value;
+
+  let list = VEHICLES.filter(v => {
+    if (currentShop !== "all" && v.dealer !== currentShop) return false;
+    if (currentCat !== "all" && v.category !== currentCat) return false;
+    if (q && !v.model.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  if (sort === "price-asc") list.sort((a,b) => a.price - b.price);
+  else if (sort === "price-desc") list.sort((a,b) => b.price - a.price);
+  else list.sort((a,b) => a.model.localeCompare(b.model));
+
+  document.getElementById("display-count").textContent = list.length;
+
+  const grid = document.getElementById("grid");
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="no-results"><div class="big-icon">🔍</div><p>該当する車両が見つかりません</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(v => {
+    const catStyle = getCatStyle(v.category);
+    const catInfo = CAT_INFO[v.category] || { label: v.category, color: "#888", icon: "🚗" };
+    const outOfStock = v.stock === 0;
+    const modelDisplay = v.model.toLowerCase().trim();
+    return `<div class="vehicle-card${outOfStock ? " out-of-stock" : ""}">
+      <div class="card-img-wrap">
+        <img 
+          src="https://cdn.jsdelivr.net/gh/Stuyk/gtav-image-archive@master/vehicles/${modelDisplay}.webp"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          alt="${v.model}"
+          loading="lazy"
+        >
+        <div class="img-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:3rem;">${catInfo.icon}</div>
+        ${outOfStock ? '<span class="stock-badge">在庫なし</span>' : ""}
+        <div class="cat-bar" style="background:${catInfo.color}"></div>
+      </div>
+      <div class="card-body">
+        <div class="card-model">${v.model.toUpperCase()}</div>
+        <div class="card-meta">
+          <span class="cat-tag" style="background:${catInfo.color}22;color:${catInfo.color}">${catInfo.icon} ${catInfo.label}</span>
+          <span class="card-price">${formatPrice(v.price)}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function initStats() {
+  document.getElementById("total-count").textContent = VEHICLES.length;
+  document.getElementById("in-stock-count").textContent = VEHICLES.filter(v => v.stock > 0).length;
+  const shops = new Set(VEHICLES.map(v => v.dealer));
+  document.getElementById("shop-count").textContent = shops.size;
+}
+
+buildShopTabs();
+buildCatFilters();
+render();
+</script>
+</body>
+</html>
